@@ -3,119 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Creative Space</title>
+    <title>Identity // Professional Profile</title>
     <style>
         :root {
-            --bg-gradient: linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            --card-bg: rgba(255, 255, 255, 0.1);
-            --text-color: #ffffff;
+            --bg: #0f1012;
+            --surface: #1b1d21;
+            --highlight: rgba(255, 255, 255, 0.05);
+            --accent: #00d2ff;
+            --text-main: #e0e0e0;
+            --text-dim: #888;
         }
 
         body {
             margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--bg-gradient);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: var(--text-color);
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            perspective: 1000px;
+            overflow: hidden;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Ambient Background Light */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 210, 255, 0.1) 0%, transparent 70%);
+            top: 10%;
+            left: 10%;
+            pointer-events: none;
         }
 
-        .container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-auto-rows: minmax(150px, auto);
-            gap: 20px;
-            width: 90%;
-            max-width: 900px;
-            padding: 20px;
+        /* The Main Hyper-Realistic Card */
+        .identity-card {
+            position: relative;
+            width: 450px;
+            padding: 40px;
+            background: var(--surface);
+            border-radius: 40px;
+            box-shadow: 
+                20px 20px 60px #08090a, 
+                -10px -10px 40px rgba(255,255,255,0.02),
+                inset 1px 1px 2px rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.2s ease-out;
+            transform-style: preserve-3d;
         }
 
-        .card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 24px;
-            padding: 25px;
-            transition: transform 0.3s ease;
+        .avatar-ring {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--surface);
+            box-shadow: 
+                inset 6px 6px 12px #08090a, 
+                inset -6px -6px 12px rgba(255,255,255,0.02);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
+        .avatar-ring div {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #1e2024, #181a1d);
+            border: 1px solid var(--accent);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
         }
 
-        /* Bento Grid Layout */
-        .about { grid-column: span 2; grid-row: span 2; }
-        .socials { grid-column: span 1; }
-        .contact { grid-column: span 1; grid-row: span 2; }
-        .links { grid-column: span 1; }
+        h1 {
+            font-size: 2rem;
+            margin: 0;
+            letter-spacing: -1px;
+            font-weight: 800;
+            background: linear-gradient(to bottom, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-        h1 { margin-top: 0; font-size: 2.5rem; }
-        h3 { margin-bottom: 10px; opacity: 0.8; }
-        
-        .contact-info p { margin: 10px 0; font-size: 0.9rem; }
-        
-        .btn {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 20px;
-            background: #fff;
-            color: #333;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
+        .tagline {
+            color: var(--accent);
             font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            display: block;
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .container { grid-template-columns: 1fr; }
-            .about, .socials, .contact, .links { grid-column: span 1; grid-row: auto; }
+        p.about {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-dim);
+            margin-bottom: 30px;
+        }
+
+        /* Tactile Buttons */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .btn {
+            background: var(--surface);
+            padding: 15px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            box-shadow: 
+                5px 5px 10px #08090a, 
+                -2px -2px 10px rgba(255,255,255,0.01);
+            transition: all 0.2s;
+        }
+
+        .btn:active {
+            box-shadow: 
+                inset 3px 3px 7px #08090a, 
+                inset -2px -2px 7px rgba(255,255,255,0.01);
+            transform: scale(0.98);
+        }
+
+        .btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        /* Interactive Physics */
+        .glare {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at var(--x) var(--y), rgba(255,255,255,0.05) 0%, transparent 50%);
+            border-radius: 40px;
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="card about">
-        <h3>Hello, I'm</h3>
-        <h1>Your Name</h1>
-        <p>A creative thinker and digital explorer. I spend my time building cool things and learning how the world works. Welcome to my little corner of the internet.</p>
-    </div>
+<div class="identity-card" id="card">
+    <div class="glare" id="glare"></div>
+    
+    <div class="avatar-ring">
+        <div></div> </div>
 
-    <div class="card socials">
-        <h3>Connect</h3>
-        <a href="#" class="btn">LinkedIn</a>
-        <a href="#" class="btn">Twitter/X</a>
-    </div>
+    <span class="tagline">Creative Strategist</span>
+    <h1>Your Name.</h1>
+    
+    <p class="about">
+        Building high-fidelity digital experiences that bridge the gap between reality and the screen. Focused on precision, aesthetics, and performance.
+    </p>
 
-    <div class="card contact">
-        <h3>Get in Touch</h3>
-        <div class="contact-info">
-            <p><strong>Email:</strong><br>hello@yourdomain.com</p>
-            <p><strong>Phone:</strong><br>+1 234 567 890</p>
-            <p><strong>Location:</strong><br>Earth (Remote)</p>
-        </div>
-    </div>
-
-    <div class="card links">
-        <h3>Projects</h3>
-        <p>Check out what I'm working on.</p>
-        <a href="#" style="color: white; font-weight: bold;">View Portfolio →</a>
+    <div class="contact-grid">
+        <a href="mailto:email@example.com" class="btn">Email Me</a>
+        <a href="tel:+123456789" class="btn">Call Directly</a>
+        <a href="#" class="btn full-width">Connect on LinkedIn</a>
     </div>
 </div>
 
+<script>
+    const card = document.getElementById('card');
+    const glare = document.getElementById('glare');
+
+    document.addEventListener('mousemove', (e) => {
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+        
+        // Dynamic Lighting
+        glare.style.setProperty('--x', `${e.offsetX}px`);
+        glare.style.setProperty('--y', `${e.offsetY}px`);
+
+        // 3D Tilt Effect
+        const rotateX = (y - 0.5) * 20;
+        const rotateY = (x - 0.5) * -20;
+        
+        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+</script>
+
 </body>
-          </html>
-          
+</html>
