@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Creative Space</title>
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --text-color: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-gradient);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: minmax(150px, auto);
+            gap: 20px;
+            width: 90%;
+            max-width: 900px;
+            padding: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Bento Grid Layout */
+        .about { grid-column: span 2; grid-row: span 2; }
+        .socials { grid-column: span 1; }
+        .contact { grid-column: span 1; grid-row: span 2; }
+        .links { grid-column: span 1; }
+
+        h1 { margin-top: 0; font-size: 2.5rem; }
+        h3 { margin-bottom: 10px; opacity: 0.8; }
+        
+        .contact-info p { margin: 10px 0; font-size: 0.9rem; }
+        
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #fff;
+            color: #333;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; }
+            .about, .socials, .contact, .links { grid-column: span 1; grid-row: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card about">
+        <h3>Hello, I'm</h3>
+        <h1>Your Name</h1>
+        <p>A creative thinker and digital explorer. I spend my time building cool things and learning how the world works. Welcome to my little corner of the internet.</p>
+    </div>
+
+    <div class="card socials">
+        <h3>Connect</h3>
+        <a href="#" class="btn">LinkedIn</a>
+        <a href="#" class="btn">Twitter/X</a>
+    </div>
+
+    <div class="card contact">
+        <h3>Get in Touch</h3>
+        <div class="contact-info">
+            <p><strong>Email:</strong><br>hello@yourdomain.com</p>
+            <p><strong>Phone:</strong><br>+1 234 567 890</p>
+            <p><strong>Location:</strong><br>Earth (Remote)</p>
+        </div>
+    </div>
+
+    <div class="card links">
+        <h3>Projects</h3>
+        <p>Check out what I'm working on.</p>
+        <a href="#" style="color: white; font-weight: bold;">View Portfolio →</a>
+    </div>
+</div>
+
+</body>
+          </html>
+          
